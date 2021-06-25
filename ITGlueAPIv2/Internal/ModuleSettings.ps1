@@ -38,19 +38,12 @@ function Import-ITGlueModuleSettings {
         Set-Variable -Name "ITGlue_JSON_Conversion_Depth" -Value $tmp_config.ITGlue_JSON_Conversion_Depth `
                     -Scope global -Force 
 
-        Write-Host "ITGlueAPI Module configuration loaded successfully from $ITGlueAPIConfPath\$ITGlueAPIConfFile!" -ForegroundColor Green
-
-        # Clean things up
+                # Clean things up
         Remove-Variable "tmp_config"
     }
     else {
-        Write-Host "No configuration file was found at $ITGlueAPIConfPath\$ITGlueAPIConfFile." -ForegroundColor Red
-        
-        Set-Variable -Name "ITGlue_Base_URI" -Value "https://api.itglue.com" -Option ReadOnly -Scope global -Force
-        
-        Write-Host "Using https://api.itglue.com as Base URI. Run Add-ITGlueBaseURI to modify."
-        Write-Host "Please run Add-ITGlueAPIKey to get started." -ForegroundColor Red
-        
+                
+        Set-Variable -Name "ITGlue_Base_URI" -Value "https://api.itglue.com" -Option ReadOnly -Scope global -Force     
         Set-Variable -Name "ITGlue_JSON_Conversion_Depth" -Value 100 -Scope global -Force
     }
 }
